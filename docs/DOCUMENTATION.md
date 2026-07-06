@@ -78,14 +78,25 @@ Windows itself keeps track of which apps are using the camera and microphone —
 HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore
 ```
 
-Each app that has ever used the camera or mic has an entry there with a "last used" start and stop time. While an app is **currently** using a device, its stop time is `0`.
+Under `ConsentStore\microphone` and `ConsentStore\webcam`, every app that has ever used the device has a subkey with two QWORD values: `LastUsedTimeStart` and `LastUsedTimeStop`. While an app is **currently** using the device, its `LastUsedTimeStop` is `0`. (Store apps get a subkey named after their package; classic desktop apps live one level deeper, under `NonPackaged`.)
 
-Privacy Dots simply reads these entries about once every 0.7 seconds. If any app's stop time is `0` for the microphone, the orange dot appears; same for the webcam and the green dot. When the app releases the device, Windows fills in the stop time and the dot disappears.
+Privacy Dots polls these keys about once every 0.7 seconds, in both `HKCU` and `HKLM`. If any subkey has `LastUsedTimeStop == 0` under `microphone`, the orange dot appears; same for `webcam` and the green dot. When the app releases the device, Windows writes the stop timestamp and the dot disappears.
 
 This approach has two nice properties:
 
 1. **It sees everything.** Any app that goes through Windows to reach the camera or mic — which is essentially all of them — is tracked, whether it's a desktop app, a Store app, or a browser tab.
 2. **It requires nothing.** No drivers, no hooks, no special permissions, and crucially, no access to the devices themselves.
+
+### Under the hood (for developers)
+
+The overlay is a WinForms window with the extended styles `WS_EX_LAYERED | WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE | WS_EX_TOPMOST`:
+
+- `WS_EX_LAYERED` + `UpdateLayeredWindow` gives per-pixel alpha — the window *is* the dots, drawn with GDI+ anti-aliasing; there is no background to make transparent
+- `WS_EX_TRANSPARENT` makes it click-through
+- `WS_EX_TOOLWINDOW` + `WS_EX_NOACTIVATE` keep it out of Alt-Tab and the taskbar, and stop it from ever taking focus
+- A 2-second timer re-asserts `HWND_TOPMOST` via `SetWindowPos`, so other topmost windows can't permanently cover it
+
+Detection is plain `Microsoft.Win32.Registry` reads on a 700 ms WinForms timer — no WMI, no ETW, no device enumeration. The overlay only redraws when the mic/camera state, settings, or screen geometry actually change. The whole app is seven C# files targeting .NET Framework 4.x (in-box on Windows 10/11), compiled with the stock `csc.exe` — no NuGet packages, no external dependencies at all.
 
 ## Privacy details
 
