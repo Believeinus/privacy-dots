@@ -1,69 +1,66 @@
 # Privacy Dots for Windows
 
-Always-on-top privacy indicator dots for Windows 10 and 11.
+Ever wondered if an app is quietly using your camera or microphone? Privacy Dots gives you a simple answer — a tiny colored dot on your screen, visible at all times.
 
-- 🟢 **Green dot** — camera is in use
-- 🟠 **Orange dot** — microphone is in use
-- Nothing shown when both are idle
+- 🟢 **Green dot** — your **camera** is in use
+- 🟠 **Orange dot** — your **microphone** is in use
+- **No dot** — nothing is watching or listening
 
-The dots are a borderless, click-through, per-pixel-transparent overlay drawn
-directly on the screen — no window, no frame, nothing except the dots. The
-overlay re-asserts its topmost position every 2 seconds so no other app can
-cover it.
+That's it. No windows, no popups, no noise. Just dots.
 
-Developed by Hiteshwar Singh.
+![Privacy Dots](assets/PrivacyDots.ico)
 
-## How it works
+## Features
 
-Windows tracks every app's camera/microphone sessions in the registry under
-`HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore`
-(the same data behind the built-in Windows indicators). While a device is in
-use, the owning app's `LastUsedTimeStop` value is `0`. Privacy Dots polls this
-every 0.7 s — no drivers, no camera/mic access of its own, negligible CPU.
+- **Always visible** — the dots stay on top of every app, even fullscreen windows, so you can never miss them
+- **Completely unobtrusive** — the overlay is transparent and click-through; it never blocks your mouse, steals focus, or shows up in Alt-Tab
+- **Adjustable** — pick the dot size (6–40 px), screen position (any corner or top center), and distance from the edge
+- **Live tray icon** — the tray icon also lights up green/orange, and its tooltip tells you what's active
+- **Start with Windows** — optional, one checkbox
+- **Simple install, clean uninstall** — a standard setup wizard; removing it from *Settings → Apps* deletes everything, including saved settings
+- **Works on Windows 10 and 11** — nothing extra to install
+
+## Your privacy comes first
+
+This is a privacy tool, so it holds itself to the same standard:
+
+- **It never touches your camera or microphone.** It only reads the usage records Windows itself keeps (the same information behind Windows' own tiny indicators) — so it can tell you a device is in use without ever accessing the device.
+- **It never connects to the internet.** No telemetry, no analytics, no update checks, no accounts. It has no network code at all.
+- **It collects nothing.** The only file it writes is a small settings file on your own PC (`%APPDATA%\PrivacyDots\settings.ini`).
+- **It's open source.** The whole app is a few small, readable C# files — see for yourself in [`src/`](src/).
+
+## Lightweight by design
+
+- The app is a single **~36 KB** executable
+- Uses roughly **28 MB of RAM** and near-zero CPU
+- No frameworks or runtimes to install — it uses the .NET Framework already built into Windows 10 and 11
 
 ## Install
 
-Run `dist\PrivacyDots-Setup-1.1.0.exe`. It is a standard wizard:
+1. Download **[PrivacyDots-Setup-1.1.0.exe](dist/PrivacyDots-Setup-1.1.0.exe)**
+2. Run it and follow the wizard (no admin rights needed)
+3. Done — Privacy Dots sits in your system tray and the dots appear whenever your camera or mic goes live
 
-- Installs per-user by default (no admin rights needed)
-- Optional **Start with Windows** and desktop-shortcut tasks
-- Uninstall cleanly any time from **Settings → Apps** (removes the app, the
-  autostart entry, and saved settings)
+To uninstall: *Settings → Apps → Privacy Dots → Uninstall*. Everything is removed cleanly.
 
-## Usage
+## Quick start
 
-Privacy Dots runs from the system tray (the tray icon is only the control
-surface — the indicator itself floats on the desktop):
+- **Double-click the tray icon** to open Settings (dot size, position, edge margin, autostart)
+- **Right-click the tray icon** → *Show test dots (5 s)* to see where your dots will appear
+- Want a quick real test? Open the Windows Camera app or start a voice recording — the dots light up within a second
 
-- **Double-click the tray icon** (or right-click → *Settings…*) to adjust
-  **dot size** (6–40 px slider, live preview), **position** (top left / top
-  center / top right / bottom left / bottom right), and **edge margin**
-- Right-click → *Show test dots (5 s)* to preview both dots
-- Right-click → *Start with Windows* to toggle autostart
-- Right-click → *Exit* to quit
+Full details are in the **[Documentation](docs/DOCUMENTATION.md)**.
 
-Settings are stored in `%APPDATA%\PrivacyDots\settings.ini`.
+## Build it yourself
 
-## Build from source
-
-No SDK needed — uses the C# compiler that ships with the .NET Framework 4.x on
-every Windows 10/11 machine:
+No SDK or IDE needed — Windows already ships with everything required:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-This generates the icon, compiles `dist\PrivacyDots.exe`, and (if
-[Inno Setup 6](https://jrsoftware.org/isinfo.php) is installed, e.g.
-`winget install JRSoftware.InnoSetup`) compiles the installer into `dist\`.
-Use `-SkipInstaller` to build only the exe.
+See the [Documentation](docs/DOCUMENTATION.md#building-from-source) for details.
 
-## Project layout
+---
 
-```
-src/          C# sources (WinForms, .NET Framework 4.x)
-tools/        icon generator script
-installer/    Inno Setup script
-build.ps1     one-shot build script
-dist/         build output (exe + installer)
-```
+Developed by **Hiteshwar Singh**
