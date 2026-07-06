@@ -61,6 +61,10 @@ powershell -ExecutionPolicy Bypass -File .\build.ps1
 
 See the [Documentation](docs/DOCUMENTATION.md#building-from-source) for details.
 
+## License
+
+Privacy Dots is open source under the [MIT License](LICENSE) — free to use, modify, and share.
+
 ---
 
 Developed by **Hiteshwar Singh**
