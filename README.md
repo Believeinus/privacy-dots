@@ -1,70 +1,77 @@
-# Privacy Dots for Windows
+<div align="center">
 
-Ever wondered if an app is quietly using your camera or microphone? Privacy Dots gives you a simple answer — a tiny colored dot on your screen, visible at all times.
+# Privacy Dots
 
-- 🟢 **Green dot** — your **camera** is in use
-- 🟠 **Orange dot** — your **microphone** is in use
-- **No dot** — nothing is watching or listening
+**Know the moment any app uses your camera or microphone.**
 
-That's it. No windows, no popups, no noise. Just dots.
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D4)](https://github.com/Believeinus/privacy-dots)
+[![License](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
+[![Version](https://img.shields.io/badge/version-1.1.0-orange)](dist/)
+[![Size](https://img.shields.io/badge/app%20size-~36%20KB-lightgrey)](dist/)
+[![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)](docs/DOCUMENTATION.md)
 
-![Privacy Dots](assets/PrivacyDots.ico)
+</div>
 
-## Features
+Privacy Dots puts a tiny colored dot on your screen whenever your camera or microphone is live — always on top, never in your way.
 
-- **Always visible** — the dots stay on top of every app, even fullscreen windows, so you can never miss them
-- **Completely unobtrusive** — the overlay is transparent and click-through; it never blocks your mouse, steals focus, or shows up in Alt-Tab
-- **Adjustable** — pick the dot size (6–40 px), screen position (any corner or top center), and distance from the edge
-- **Live tray icon** — the tray icon also lights up green/orange, and its tooltip tells you what's active
-- **Start with Windows** — optional, one checkbox
-- **Simple install, clean uninstall** — a standard setup wizard; removing it from *Settings → Apps* deletes everything, including saved settings
-- **Works on Windows 10 and 11** — nothing extra to install
+| Indicator | Meaning |
+|:---------:|---------|
+| 🟢 | Camera is in use |
+| 🟠 | Microphone is in use |
+| *(nothing)* | All quiet — no app is watching or listening |
 
-## Your privacy comes first
+## ✨ Features
 
-This is a privacy tool, so it holds itself to the same standard:
+- **Always visible** — the dots stay above every app and window, so you can never miss them
+- **Never in the way** — transparent, click-through overlay; no border, no focus stealing, no Alt-Tab entry
+- **Yours to adjust** — dot size (6–40 px), position (any corner or top center), and edge margin, with live preview
+- **Smart tray icon** — mirrors the dots and tells you in plain words what's active
+- **Set and forget** — optional start with Windows
+- **Clean install, cleaner uninstall** — a standard wizard in; one click in *Settings → Apps* out, nothing left behind
 
-- **It never touches your camera or microphone.** It only reads the usage records Windows itself keeps (the same information behind Windows' own tiny indicators) — so it can tell you a device is in use without ever accessing the device.
-- **It never connects to the internet.** No telemetry, no analytics, no update checks, no accounts. It has no network code at all.
-- **It collects nothing.** The only file it writes is a small settings file on your own PC (`%APPDATA%\PrivacyDots\settings.ini`).
-- **It's open source.** The whole app is a few small, readable C# files — see for yourself in [`src/`](src/).
+## 🔒 Your privacy comes first
 
-## Lightweight by design
+> [!NOTE]
+> Privacy Dots is a privacy tool, so it holds itself to the same standard it monitors.
 
-- The app is a single **~36 KB** executable
-- Uses roughly **28 MB of RAM** and near-zero CPU
-- No frameworks or runtimes to install — it uses the .NET Framework already built into Windows 10 and 11
+- **Never touches your camera or mic.** It reads the usage records Windows itself keeps — the same source behind Windows' own indicators — so it knows a device is busy without ever accessing it.
+- **Zero network code.** No telemetry, no analytics, no update pings. It *can't* phone home.
+- **Collects nothing.** The only file it writes is its own settings on your PC.
+- **Fully open source.** Seven short C# files — read them in [`src/`](src/).
 
-## Install
+## 🪶 Lightweight by design
+
+Single **~36 KB** executable · ~28 MB RAM · near-zero CPU · built on the .NET Framework already inside Windows — nothing extra to install.
+
+## 🚀 Get started
 
 1. Download **[PrivacyDots-Setup-1.1.0.exe](dist/PrivacyDots-Setup-1.1.0.exe)**
-2. Run it and follow the wizard (no admin rights needed)
-3. Done — Privacy Dots sits in your system tray and the dots appear whenever your camera or mic goes live
+2. Run the wizard (no admin rights needed)
+3. That's it — the dots appear whenever your camera or mic goes live
 
-To uninstall: *Settings → Apps → Privacy Dots → Uninstall*. Everything is removed cleanly.
+> [!TIP]
+> Double-click the tray icon for settings, or right-click → *Show test dots* to preview placement. Full guide in the **[Documentation](docs/DOCUMENTATION.md)**.
 
-## Quick start
+## 🛠️ Build from source
 
-- **Double-click the tray icon** to open Settings (dot size, position, edge margin, autostart)
-- **Right-click the tray icon** → *Show test dots (5 s)* to see where your dots will appear
-- Want a quick real test? Open the Windows Camera app or start a voice recording — the dots light up within a second
-
-Full details are in the **[Documentation](docs/DOCUMENTATION.md)**.
-
-## Build it yourself
-
-No SDK or IDE needed — Windows already ships with everything required:
+No IDE, no SDK — Windows ships with everything needed:
 
 ```powershell
+git clone https://github.com/Believeinus/privacy-dots.git
+cd privacy-dots
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-See the [Documentation](docs/DOCUMENTATION.md#building-from-source) for details.
+Details in the [documentation](docs/DOCUMENTATION.md#building-from-source).
 
-## License
+## 📄 License
 
-Privacy Dots is open source under the [MIT License](LICENSE) — free to use and share.
+Open source under the [MIT License](LICENSE) — free to use and share.
 
 ---
 
+<div align="center">
+
 Developed by **Hiteshwar Singh**
+
+</div>
