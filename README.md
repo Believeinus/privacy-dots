@@ -63,7 +63,7 @@ See the [Documentation](docs/DOCUMENTATION.md#building-from-source) for details.
 
 ## License
 
-Privacy Dots is open source under the [MIT License](LICENSE) — free to use, modify, and share.
+Privacy Dots is open source under the [MIT License](LICENSE) — free to use and share.
 
 ---
 
