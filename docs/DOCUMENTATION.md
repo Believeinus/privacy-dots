@@ -40,7 +40,7 @@ The dots are not a window in the usual sense. They have no border, no background
 
 ## Installing
 
-1. Download `PrivacyDots-Setup-1.1.0.exe` from the [`dist`](../dist/) folder
+1. Download `PrivacyDots-Setup-1.1.1.exe` from the [latest release](https://github.com/Believeinus/privacy-dots/releases/latest)
 2. Double-click it. The setup wizard walks you through:
    - **Install location** — installs per-user by default, so no admin prompt appears
    - **Start with Windows** — tick this if you want the dots active from the moment you log in *(recommended)*
@@ -88,6 +88,8 @@ HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessMana
 Under `ConsentStore\microphone` and `ConsentStore\webcam`, every app that has ever used the device has a subkey with two QWORD values: `LastUsedTimeStart` and `LastUsedTimeStop`. While an app is **currently** using the device, its `LastUsedTimeStop` is `0`. (Store apps get a subkey named after their package; classic desktop apps live one level deeper, under `NonPackaged`.)
 
 Privacy Dots polls these keys about once every 0.7 seconds, in both `HKCU` and `HKLM`. If any subkey has `LastUsedTimeStop == 0` under `microphone`, the orange dot appears; same for `webcam` and the green dot. When the app releases the device, Windows writes the stop timestamp and the dot disappears.
+
+**Stale-entry protection:** the consent store can contain leftover "still running" entries — if an app crashes, the PC loses power mid-use, or (notably on Windows 10) the stop timestamp is never written, `LastUsedTimeStop` stays `0` forever. Privacy Dots therefore verifies every active entry against the list of running processes: desktop-app entries name the exe path, Store-app entries name the package family (matched via the `GetPackageFamilyName` API). If the app an entry names isn't actually running, the entry is ignored. When verification is impossible, the dot is shown anyway — for a privacy indicator, a false alarm beats a missed one.
 
 This approach has two nice properties:
 

@@ -6,7 +6,7 @@
 
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D4)](https://github.com/Believeinus/privacy-dots)
 [![License](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.1.0-orange)](dist/)
+[![Version](https://img.shields.io/badge/version-1.1.1-orange)](dist/)
 [![Size](https://img.shields.io/badge/app%20size-~36%20KB-lightgrey)](dist/)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)](docs/DOCUMENTATION.md)
 
@@ -45,7 +45,7 @@ Single **~36 KB** executable · ~28 MB RAM · near-zero CPU · built on the .NET
 
 ## 🚀 Get started
 
-1. Download **[PrivacyDots-Setup-1.1.0.exe](https://github.com/Believeinus/privacy-dots/releases/latest/download/PrivacyDots-Setup-1.1.0.exe)** from the [latest release](https://github.com/Believeinus/privacy-dots/releases/latest)
+1. Download **[PrivacyDots-Setup-1.1.1.exe](https://github.com/Believeinus/privacy-dots/releases/latest/download/PrivacyDots-Setup-1.1.1.exe)** from the [latest release](https://github.com/Believeinus/privacy-dots/releases/latest)
 2. Run the wizard (no admin rights needed)
 3. That's it — the dots appear whenever your camera or mic goes live
 

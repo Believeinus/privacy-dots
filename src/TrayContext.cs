@@ -97,7 +97,7 @@ namespace PrivacyDots
             aboutItem.Click += delegate
             {
                 MessageBox.Show(
-                    "Privacy Dots 1.1\n" +
+                    "Privacy Dots 1.1.1\n" +
                     "Developed by Hiteshwar Singh\n\n" +
                     "Shows an always-on-top indicator when your camera (green) or microphone (orange) is in use.",
                     "About Privacy Dots", MessageBoxButtons.OK, MessageBoxIcon.Information);
