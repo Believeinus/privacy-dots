@@ -45,7 +45,7 @@ Single **~36 KB** executable · ~28 MB RAM · near-zero CPU · built on the .NET
 
 ## 🚀 Get started
 
-1. Download **[PrivacyDots-Setup-1.1.0.exe](dist/PrivacyDots-Setup-1.1.0.exe)**
+1. Download **[PrivacyDots-Setup-1.1.0.exe](https://github.com/Believeinus/privacy-dots/releases/latest/download/PrivacyDots-Setup-1.1.0.exe)** from the [latest release](https://github.com/Believeinus/privacy-dots/releases/latest)
 2. Run the wizard (no admin rights needed)
 3. That's it — the dots appear whenever your camera or mic goes live
 
