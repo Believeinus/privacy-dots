@@ -20,6 +20,7 @@ Everything about installing, using, and understanding Privacy Dots.
 - [Building from source](#building-from-source)
 - [Troubleshooting](#troubleshooting)
 - [FAQ](#faq)
+- [Changelog](../CHANGELOG.md)
 
 ---
 

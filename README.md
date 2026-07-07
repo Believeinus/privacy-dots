@@ -68,6 +68,10 @@ Details in the [documentation](docs/DOCUMENTATION.md#building-from-source).
 
 Open source under the [MIT License](LICENSE) — free to use and share.
 
+## 📝 What's new
+
+See the [Changelog](CHANGELOG.md) for version history — the latest installer is always on the [releases page](https://github.com/Believeinus/privacy-dots/releases/latest).
+
 ---
 
 <div align="center">
