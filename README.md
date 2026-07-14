@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/logo.png" alt="Privacy Dots logo" width="120">
+
 # Privacy Dots
 
 **Know the moment any app uses your camera or microphone.**
